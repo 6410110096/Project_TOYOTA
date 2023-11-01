@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+
 void main() {
-  print("TEST SYSTEM TO GITHUP");
+  var app = MaterialApp();
+  runApp(app);
 }
