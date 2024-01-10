@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 //Import package
-class Morescreen extends StatelessWidget {
-  const Morescreen({Key? key}) : super(key: key);
+class Moresonescreen extends StatelessWidget {
+  const Moresonescreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

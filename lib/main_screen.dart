@@ -1,7 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:evcar/Screens/home_page.dart';
 import 'package:evcar/Screens/more_page.dart';
-import 'package:evcar/Screens/profile_page.dart';
+import 'package:evcar/Screens/moreone_page.dart';
+import 'package:evcar/Screens/Profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,14 +12,19 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreen extends State<MainScreen> {
   int selectedIndex = 0;
-  final screen = [HomeScreen(), ProfileScreen(), MoreScreen(), MoreScreen()];
+  final screen = [
+    Homescreen(),
+    Moresonescreen(),
+    Morescreen(),
+    ProfileScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Color.fromARGB(255, 11, 12, 12),
-        color: Color.fromRGBO(179, 19, 19, 1),
+        backgroundColor: Color.fromRGBO(5, 4, 4, 1),
+        color: Color.fromRGBO(156, 13, 13, 1),
         index: selectedIndex,
         items: [
           Icon(
@@ -44,13 +50,25 @@ class _MainScreen extends State<MainScreen> {
         ],
         onTap: (index) {
           setState(() {
-            selectedIndex = index;
+            selectedIndex = index.clamp(0, screen.length - 1);
           });
         },
         animationCurve: Curves.easeInBack,
-        animationDuration: const Duration(milliseconds: 300),
+        animationDuration: const Duration(milliseconds: 500),
       ),
-      body: screen[selectedIndex],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(22, 1, 1, 1),
+              Color.fromRGBO(5, 4, 4, 1),
+            ],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+          ),
+        ),
+        child: screen[selectedIndex],
+      ),
     );
   }
 }

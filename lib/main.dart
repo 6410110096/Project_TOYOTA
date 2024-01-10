@@ -9,9 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TOYOTA',
+      title: 'DemoApp',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color.fromARGB(255, 11, 12, 12),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
