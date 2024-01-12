@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:evcar/Screens/Profile/update_profile.dart';
-import 'package:evcar/Screens/Profile/profile_menu.dart';
-import 'package:evcar/config/config.dart';
+import 'package:evcar/Screens/Profile/component/update_profile.dart';
+import 'package:evcar/Screens/Profile/component/profile_menu.dart';
+import 'package:evcar/component/config/config.dart';
 
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                         height: 120,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
-                          child: Image(image: AssetImage(tProfileImage)),
+                          child: Image(image: AssetImage(carWhile)),
                         ),
                       ),
                       Positioned(

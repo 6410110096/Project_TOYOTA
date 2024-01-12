@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 //Import other folder
-import 'package:evcar/config/config.dart';
+import 'package:evcar/component/config/config.dart';
 
 class Homescreen extends StatelessWidget {
   const Homescreen({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class Homescreen extends StatelessWidget {
               ),
 
               Image.network(
-                'lib/img/demoone.png',
+                carWhile,
                 width: 320,
               ),
 
