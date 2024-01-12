@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:evcar/config/config.dart';
+import 'package:evcar/component/config/config.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class ProfileMenuWidget extends StatelessWidget {
