@@ -6,11 +6,11 @@ import 'package:evcar/Screens/Account/Login/component/login_form.dart';
 import 'package:evcar/Screens/Account/Login/component/login_screen_top_image.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return const Background(
       child: SingleChildScrollView(
         child: Responsive(
           mobile: MobileLoginScreen(),
@@ -23,7 +23,6 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('data'),
                     SizedBox(
                       width: 450,
                       child: LoginForm(),
@@ -41,8 +40,8 @@ class LoginScreen extends StatelessWidget {
 
 class MobileLoginScreen extends StatelessWidget {
   const MobileLoginScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

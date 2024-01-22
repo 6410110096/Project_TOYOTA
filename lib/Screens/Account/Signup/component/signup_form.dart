@@ -1,98 +1,157 @@
+import 'package:evcar/Screens/Account/Login/login_screen.dart';
+import 'package:evcar/authentication/authemtication_repository/models/user_model.dart';
+import 'package:evcar/authentication/controllers/signup_controller.dart';
 import 'package:flutter/material.dart';
-
-import 'package:evcar/component/acheck_account.dart';
 import 'package:evcar/component/config/config.dart';
-import '../../Login/login_screen.dart';
+import 'package:get/get.dart';
 
 class SignUpForm extends StatelessWidget {
-  const SignUpForm({
-    Key? key,
-  }) : super(key: key);
+  const SignUpForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            keyboardType: TextInputType.text,
-            textInputAction: TextInputAction.next,
-            cursorColor: Colors.deepOrangeAccent,
-            onSaved: (fullName) {},
-            decoration: const InputDecoration(
-              hintText: "Full Name",
-              prefixIcon: Padding(
-                padding: EdgeInsets.all(defaultPadding),
-                child: Icon(Icons.person, color: Colors.deepOrangeAccent),
-              ),
-            ),
-          ),
-          const SizedBox(height: defaultPadding), // Add spacing between fields
-          TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            textInputAction: TextInputAction.next,
-            cursorColor: Colors.deepOrangeAccent,
-            onSaved: (email) {},
-            decoration: const InputDecoration(
-              hintText: "Your email",
-              prefixIcon: Padding(
-                padding: EdgeInsets.all(defaultPadding),
-                child: Icon(Icons.email, color: Colors.deepOrangeAccent),
-              ),
-            ),
-          ),
-          const SizedBox(height: defaultPadding), // Add spacing between fields
-          TextFormField(
-            keyboardType: TextInputType.phone,
-            textInputAction: TextInputAction.next,
-            cursorColor: Colors.deepOrangeAccent,
-            onSaved: (phoneNumber) {},
-            decoration: const InputDecoration(
-              hintText: "Phone number",
-              prefixIcon: Padding(
-                padding: EdgeInsets.all(defaultPadding),
-                child: Icon(Icons.phone, color: Colors.deepOrangeAccent),
-              ),
-            ),
-          ),
-          const SizedBox(height: defaultPadding), // Add spacing between fields
-          TextFormField(
-            textInputAction: TextInputAction.done,
-            obscureText: true,
-            cursorColor: Colors.deepOrangeAccent,
-            onSaved: (password) {},
-            decoration: const InputDecoration(
-              hintText: "Your password",
-              prefixIcon: Padding(
-                padding: EdgeInsets.all(defaultPadding),
-                child: Icon(Icons.lock, color: Colors.deepOrangeAccent),
-              ),
-            ),
-          ),
-          const SizedBox(height: defaultPadding / 2),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.deepOrangeAccent,
-            ),
-            child: Text("Sign Up".toUpperCase(),
-                style: const TextStyle(color: Colors.white)),
-          ),
-          const SizedBox(height: defaultPadding),
-          AlreadyHaveAnAccountCheck(
-            login: false,
-            press: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const LoginScreen();
-                  },
+    final controller = Get.put(SignUpController());
+    final formKey = GlobalKey<FormState>();
+
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: tFormHeight - 10),
+      child: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Username
+            TextFormField(
+              controller: controller.username,
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.person_outline_outlined,
+                  color: Colors.black,
                 ),
-              );
-            },
-          ),
-        ],
+                labelText: tUserName,
+                hintText: tUserName,
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: tFormHeight - 20),
+
+            // Email
+            TextFormField(
+              controller: controller.email,
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.mail,
+                  color: Colors.black,
+                ),
+                labelText: tEmail,
+                hintText: tEmail,
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: tFormHeight - 20),
+
+            //Tel. Phone
+            TextFormField(
+              controller: controller.phone,
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.phone_android,
+                  color: Colors.black,
+                ),
+                labelText: tPhone,
+                hintText: tPhone,
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: tFormHeight - 20),
+
+            // Password
+            TextFormField(
+              controller: controller.password,
+              decoration: const InputDecoration(
+                prefixIcon: Icon(
+                  Icons.fingerprint,
+                  color: Colors.black,
+                ),
+                labelText: tPassword,
+                hintText: tPassword,
+                border: OutlineInputBorder(),
+                suffixIcon: IconButton(
+                  onPressed: null,
+                  icon: Icon(Icons.remove_red_eye_sharp),
+                ),
+              ),
+            ),
+            const SizedBox(height: tFormHeight - 20),
+
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    // For Email & Password Authentication
+                    /*SignUpController.instance.registerUser(
+                        controller.email.text.trim(),
+                        controller.password.text.trim());*/
+
+                    // For Phone Authentication
+                    /*SignUpController.instance
+                        .phoneAuthentication(controller.phone.text.trim());
+                    Get.to(() => const OTPScreen());*/
+
+                    // Get User and Pass it to Controller
+                    final user = UserModel(
+                      email: controller.email.text.trim(),
+                      password: controller.password.text.trim(),
+                      username: controller.username.text.trim(),
+                      phone: controller.phone.text.trim(),
+                    );
+                    SignUpController.instance.createUser(user);
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 255, 70, 64)),
+                child: Text(
+                  tSignup.toUpperCase(),
+                ),
+              ),
+            ),
+            const SizedBox(height: tFormHeight - 20),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Align(
+                  alignment: Alignment.center,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const LoginScreen();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text.rich(
+                    TextSpan(
+                      text: tAlreadyHaveAnAnccount,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      children: const [
+                        TextSpan(
+                          text: tSignup,
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

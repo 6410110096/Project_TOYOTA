@@ -6,11 +6,11 @@ import 'package:evcar/Screens/Welcome/component/login_signup_btn.dart';
 import 'package:evcar/Screens/Welcome/component/welcome_image.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Background(
+    return const Background(
       child: SingleChildScrollView(
         child: SafeArea(
           child: Responsive(
@@ -43,8 +43,8 @@ class WelcomeScreen extends StatelessWidget {
 
 class MobileWelcomeScreen extends StatelessWidget {
   const MobileWelcomeScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

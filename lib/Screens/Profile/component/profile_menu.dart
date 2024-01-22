@@ -4,13 +4,13 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class ProfileMenuWidget extends StatelessWidget {
   const ProfileMenuWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     required this.onPress,
     this.endIcon = true,
     this.textColor,
-  }) : super(key: key);
+  });
 
   final String title;
   final IconData icon;
@@ -35,15 +35,15 @@ class ProfileMenuWidget extends StatelessWidget {
         ),
       ),
       title: Text(title,
-          style:
-              Theme.of(context).textTheme.bodyMedium?.apply(color: textColor)),
+          style: Theme.of(context).textTheme.bodyMedium?.apply(color: tColor)),
       trailing: endIcon
           ? Container(
-              width: 30,
+              width: 20,
               height: 30,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  color: Colors.grey.withOpacity(0.1)),
+                  color: const Color.fromARGB(255, 240, 235, 235)
+                      .withOpacity(0.1)),
               child: const Icon(LineAwesomeIcons.angle_double_right,
                   size: 18, color: Colors.grey))
           : null,
