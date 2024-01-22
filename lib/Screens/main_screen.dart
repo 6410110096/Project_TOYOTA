@@ -14,10 +14,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreen extends State<MainScreen> {
   int selectedIndex = 0;
   final screen = [
-    Homescreen(),
-    Moresonescreen(),
-    Morescreen(),
-    ProfileScreen(),
+    const Homescreen(),
+    const Moresonescreen(),
+    const Morescreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -25,10 +25,10 @@ class _MainScreen extends State<MainScreen> {
     return Background(
       child: Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Color.fromRGBO(5, 4, 4, 1),
-          color: Color.fromRGBO(156, 13, 13, 1),
+          backgroundColor: const Color.fromRGBO(5, 4, 4, 1),
+          color: const Color.fromRGBO(156, 13, 13, 1),
           index: selectedIndex,
-          items: [
+          items: const [
             Icon(
               Icons.home,
               size: 40,
@@ -59,16 +59,6 @@ class _MainScreen extends State<MainScreen> {
           animationDuration: const Duration(milliseconds: 500),
         ),
         body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color.fromRGBO(22, 1, 1, 1),
-                Color.fromRGBO(5, 4, 4, 1),
-              ],
-              begin: FractionalOffset.topCenter,
-              end: FractionalOffset.bottomCenter,
-            ),
-          ),
           child: screen[selectedIndex],
         ),
       ),

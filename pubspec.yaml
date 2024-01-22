@@ -28,22 +28,42 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
   profile: ^0.0.1
-  line_awesome_flutter: ^2.0.0
+  
   responsive_framework: ^1.0.0
-  get:
+  get: ^4.6.6
+
+  # OTP text field package
+  flutter_otp_text_field: ^1.1.1
+  
+  # Google text font package
+  google_fonts: ^6.1.0
+
   
   flutter:
     sdk: flutter
   
-  flutter_thingspeak: ^1.1.0
+  # Firebase package
+  firebase_core: ^2.24.2
+  firebase_storage: ^11.2.4
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+
+  logger: ^2.0.2+1
+  
   flutter_svg: ^2.0.9
   percent_indicator: ^4.0.1
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  
+  # Icon package
+  line_awesome_flutter: ^2.0.0
   cupertino_icons: ^1.0.5
+
+  # Navbar package
   curved_navigation_bar: ^1.0.3 #latest version
+
   http: ^1.1.2
+
   
 dev_dependencies:
   flutter_test:
@@ -54,7 +74,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

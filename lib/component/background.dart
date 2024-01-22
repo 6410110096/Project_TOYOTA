@@ -15,7 +15,7 @@ class Background extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-              colors: [Color.fromRGBO(22, 1, 1, 1), Color.fromRGBO(5, 4, 4, 1)],
+              colors: [Color.fromRGBO(8, 6, 6, 1), Color.fromRGBO(0, 0, 0, 1)],
               begin: FractionalOffset.topCenter,
               end: FractionalOffset.bottomCenter),
         ),

@@ -1,3 +1,4 @@
+import 'package:evcar/component/background.dart';
 import 'package:flutter/material.dart';
 
 //Import package
@@ -6,8 +7,10 @@ class Morescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
+    return const Background(
+      child: Stack(
+        fit: StackFit.expand,
+      ),
     );
   }
 }

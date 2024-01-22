@@ -11,20 +11,25 @@ class WelcomeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-          "WELCOME TO TOYOTA EV Application",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: defaultPadding * 2),
         Row(
           children: [
             const Spacer(),
             Expanded(
-              flex: 8,
-              child: Image.asset(carWhile),
+              flex: 10,
+              child: Image.asset(blackCar),
             ),
             const Spacer(),
           ],
+        ),
+        const Text(
+          "Welcome",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 40, color: tAccentColor),
+        ),
+        //const SizedBox(height: defaultPadding * 2),
+        const Text(
+          "Let's Get Start",
+          style: TextStyle(fontSize: 15, color: tColor),
         ),
         const SizedBox(height: defaultPadding * 2),
       ],
