@@ -32,7 +32,7 @@ class UpdateProfileScreen extends StatelessWidget {
                       height: 120,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: const Image(image: AssetImage(carWhile)),
+                        child: const Image(image: AssetImage(whiteCar)),
                       ),
                     ),
                     Positioned(
@@ -58,7 +58,11 @@ class UpdateProfileScreen extends StatelessWidget {
                     TextFormField(
                       decoration: const InputDecoration(
                           label: Text(tUserName),
-                          prefixIcon: Icon(LineAwesomeIcons.user)),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            LineAwesomeIcons.user,
+                            color: Colors.black,
+                          )),
                     ),
                     const SizedBox(height: tFormHeight - 20),
 
@@ -66,7 +70,11 @@ class UpdateProfileScreen extends StatelessWidget {
                     TextFormField(
                       decoration: const InputDecoration(
                           label: Text(tEmail),
-                          prefixIcon: Icon(LineAwesomeIcons.envelope_1)),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            LineAwesomeIcons.envelope_1,
+                            color: Colors.black,
+                          )),
                     ),
                     const SizedBox(height: tFormHeight - 20),
 
@@ -74,7 +82,11 @@ class UpdateProfileScreen extends StatelessWidget {
                     TextFormField(
                       decoration: const InputDecoration(
                           label: Text(tPhone),
-                          prefixIcon: Icon(LineAwesomeIcons.phone)),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            LineAwesomeIcons.phone,
+                            color: Colors.black,
+                          )),
                     ),
                     const SizedBox(height: tFormHeight - 20),
 
@@ -82,7 +94,11 @@ class UpdateProfileScreen extends StatelessWidget {
                     TextFormField(
                       decoration: const InputDecoration(
                           label: Text(tPassword),
-                          prefixIcon: Icon(LineAwesomeIcons.fingerprint)),
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            LineAwesomeIcons.fingerprint,
+                            color: Colors.black,
+                          )),
                     ),
                     const SizedBox(height: tFormHeight - 20),
 
@@ -92,7 +108,7 @@ class UpdateProfileScreen extends StatelessWidget {
                         onPressed: () =>
                             Get.to(() => const UpdateProfileScreen()),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: tPrimaryColor,
+                            backgroundColor: Colors.deepOrangeAccent,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: const Text(

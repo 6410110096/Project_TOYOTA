@@ -42,9 +42,9 @@ class Homescreen extends StatelessWidget {
                   style: TextStyle(fontSize: 12, color: tPrimaryColor),
                 ),
                 const Spacer(),
-                /*Image.network(
+                Image.network(
                   blackCar,
-                ),*/
+                ),
                 const Spacer(),
                 //แสดงค่าแบตเตอรี่ ในรูปแบบ Charging
                 CircularPercentIndicator(
