@@ -4,8 +4,8 @@ import 'package:evcar/component/config/config.dart';
 
 class SignUpScreenTopImage extends StatelessWidget {
   const SignUpScreenTopImage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

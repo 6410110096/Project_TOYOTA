@@ -6,7 +6,7 @@ import 'package:evcar/component/config/config.dart';
 import 'package:get/get.dart';
 
 class SignUpForm extends StatelessWidget {
-  const SignUpForm({Key? key}) : super(key: key);
+  const SignUpForm({super.key});
 
   @override
   Widget build(BuildContext context) {

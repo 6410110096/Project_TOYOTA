@@ -8,7 +8,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:evcar/component/config/config.dart';
 
 class Homescreen extends StatelessWidget {
-  const Homescreen({Key? key}) : super(key: key);
+  const Homescreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -168,6 +168,7 @@ class Homescreen extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                           color: kPrimaryColor)),
                                 ),
+                                SizedBox(height: 10),
                               ],
                             ),
                           ),

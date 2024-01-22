@@ -13,7 +13,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 //Import package
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

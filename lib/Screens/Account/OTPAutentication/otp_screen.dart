@@ -6,11 +6,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OTPScreen extends StatelessWidget {
-  const OTPScreen({Key? key}) : super(key: key);
+  const OTPScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     var otpController = Get.put(OTPController());
+    // ignore: prefer_typing_uninitialized_variables
     var otp;
     return Scaffold(
       body: Container(

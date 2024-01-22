@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
-  const UpdateProfileScreen({Key? key}) : super(key: key);
+  const UpdateProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

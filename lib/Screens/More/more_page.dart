@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 //Import package
 class Morescreen extends StatelessWidget {
-  const Morescreen({Key? key}) : super(key: key);
+  const Morescreen({super.key});
 
   @override
   Widget build(BuildContext context) {

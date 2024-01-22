@@ -25,7 +25,7 @@ class AuthenticationRepository extends GetxController {
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const WelcomeScreen())
-        : Get.offAll(() => MainScreen());
+        : Get.offAll(() => const MainScreen());
   }
 
   Future<void> phoneAuthtication(String phone) async {
@@ -64,7 +64,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => MainScreen())
+          ? Get.offAll(() => const MainScreen())
           : Get.to(() => const LoginScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
@@ -79,6 +79,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      // ignore: unused_catch_clause, empty_catches
     } on FirebaseAuthException catch (e) {
     } catch (_) {}
   }

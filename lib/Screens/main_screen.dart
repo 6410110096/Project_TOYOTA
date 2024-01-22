@@ -7,7 +7,10 @@ import 'package:evcar/component/background.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MainScreen createState() => _MainScreen();
 }
 
