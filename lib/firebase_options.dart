@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '105804718316',
     projectId: 'demoapp-4c714',
     storageBucket: 'demoapp-4c714.appspot.com',
+    androidClientId: '105804718316-6q8g08ddec1vfi6ij5micdm1f2n7a9u4.apps.googleusercontent.com',
+    iosClientId: '105804718316-0rj4a9901njlqln87g9e832t3siein7h.apps.googleusercontent.com',
     iosBundleId: 'com.example.evcar',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '105804718316',
     projectId: 'demoapp-4c714',
     storageBucket: 'demoapp-4c714.appspot.com',
+    androidClientId: '105804718316-6q8g08ddec1vfi6ij5micdm1f2n7a9u4.apps.googleusercontent.com',
+    iosClientId: '105804718316-9v0c61o1vnk5plfjt7lte3acnqela9kr.apps.googleusercontent.com',
     iosBundleId: 'com.example.evcar.RunnerTests',
   );
 }
