@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:105804718316:android:204eae4e3ccdcb956605c9",
+        "mobilesdk_app_id": "1:105804718316:android:ab23a4f8214bd6bd6605c9",
         "android_client_info": {
-          "package_name": "com.example.evcar"
+          "package_name": "com.codingwitht.login_flutter_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "105804718316-dd68nco3j1na7j0rsgo8nqkmc9le80t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCePg3PH0XhKAkP4tepZjWCq-YOJaZYd-I"
@@ -20,7 +25,63 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105804718316-dd68nco3j1na7j0rsgo8nqkmc9le80t0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "105804718316-0rj4a9901njlqln87g9e832t3siein7h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.evcar"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105804718316:android:204eae4e3ccdcb956605c9",
+        "android_client_info": {
+          "package_name": "com.example.evcar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105804718316-6q8g08ddec1vfi6ij5micdm1f2n7a9u4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evcar",
+            "certificate_hash": "45d3f17191cd811681dc3b996444217d939485d6"
+          }
+        },
+        {
+          "client_id": "105804718316-dd68nco3j1na7j0rsgo8nqkmc9le80t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCePg3PH0XhKAkP4tepZjWCq-YOJaZYd-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105804718316-dd68nco3j1na7j0rsgo8nqkmc9le80t0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "105804718316-0rj4a9901njlqln87g9e832t3siein7h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.evcar"
+              }
+            }
+          ]
         }
       }
     }
