@@ -1,10 +1,10 @@
+import 'package:evcar/features/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
 import '../../controllers/profile_controller.dart';
-import '../../models/user_model.dart';
 
 class ProfileFormScreen extends StatelessWidget {
   const ProfileFormScreen({

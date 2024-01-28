@@ -24,7 +24,8 @@ class SocialFooter extends StatelessWidget {
     final controller = Get.put(LoginController());
     return Container(
       padding: const EdgeInsets.only(
-          top: tDefaultSpace * 1.5, bottom: tDefaultSpace),
+        top: tDefaultSpace,
+      ),
       child: Column(
         children: [
           Obx(
@@ -58,7 +59,7 @@ class SocialFooter extends StatelessWidget {
                           : () => controller.facebookSignIn(),
             ),
           ),
-          const SizedBox(height: tDefaultSpace * 2),
+          const SizedBox(height: 10),
           ClickableRichTextWidget(
             text1: text1.tr,
             text2: text2.tr,

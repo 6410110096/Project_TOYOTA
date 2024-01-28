@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class FormHeaderWidget extends StatelessWidget {
   const FormHeaderWidget({
     super.key,
-    this.imageColor,
-    this.heightBetween,
+    this.imageColor = Colors.white70,
+    this.heightBetween = 35,
     required this.image,
     required this.title,
     required this.subTitle,
-    this.imageHeight = 0.2,
+    this.imageHeight = 0.25,
     this.textAlign,
     this.crossAxisAlignment = CrossAxisAlignment.center,
   });
@@ -32,10 +32,17 @@ class FormHeaderWidget extends StatelessWidget {
             color: imageColor,
             height: size.height * imageHeight),
         SizedBox(height: heightBetween),
-        Text(title, style: Theme.of(context).textTheme.titleLarge),
+        Text(title,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(color: Colors.red)),
         Text(subTitle,
             textAlign: textAlign,
-            style: Theme.of(context).textTheme.titleMedium),
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium
+                ?.copyWith(color: Colors.white54)),
       ],
     );
   }

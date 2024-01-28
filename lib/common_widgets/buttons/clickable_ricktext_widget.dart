@@ -24,13 +24,17 @@ class ClickableRichTextWidget extends StatelessWidget {
           TextSpan(
             children: [
               TextSpan(
-                  text: '${text1.tr}? ',
-                  style: Theme.of(context).textTheme.bodyMedium),
+                text: '${text1.tr}? ',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Colors.white),
+              ),
               TextSpan(
                 text: text2.tr,
                 style: Theme.of(context)
                     .textTheme
-                    .titleLarge!
+                    .titleMedium!
                     .apply(color: tFacebookBgColor),
               ),
             ],

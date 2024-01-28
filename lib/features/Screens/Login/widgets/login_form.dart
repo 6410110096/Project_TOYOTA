@@ -30,7 +30,10 @@ class LoginFormWidget extends StatelessWidget {
               validator: Helper.validateEmail,
               controller: controller.email,
               decoration: const InputDecoration(
-                  prefixIcon: Icon(LineAwesomeIcons.user),
+                  prefixIcon: Icon(
+                    LineAwesomeIcons.user,
+                    color: Colors.black,
+                  ),
                   labelText: tEmail,
                   hintText: tEmail),
             ),
@@ -46,13 +49,17 @@ class LoginFormWidget extends StatelessWidget {
                 },
                 obscureText: controller.showPassword.value ? false : true,
                 decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.fingerprint),
+                  prefixIcon:
+                      const Icon(Icons.fingerprint, color: Colors.black),
                   labelText: tPassword,
                   hintText: tPassword,
                   suffixIcon: IconButton(
                     icon: controller.showPassword.value
-                        ? const Icon(LineAwesomeIcons.eye)
-                        : const Icon(LineAwesomeIcons.eye_slash),
+                        ? const Icon(LineAwesomeIcons.eye, color: Colors.black)
+                        : const Icon(
+                            LineAwesomeIcons.eye_slash,
+                            color: Colors.black,
+                          ),
                     onPressed: () => controller.showPassword.value =
                         !controller.showPassword.value,
                   ),
@@ -84,9 +91,15 @@ class LoginFormWidget extends StatelessWidget {
                         : () => controller.login(),
               ),
             ),
-
+            const SizedBox(height: 15),
+            const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "══════ Or connect with other ══════",
+                  style: TextStyle(color: Colors.white),
+                )),
             SocialFooter(
-                text1: tAlreadyHaveAnAccount,
+                text1: tDontHaveAnAccount,
                 text2: tSignup,
                 onPressed: () => Get.off(() => const SignUpScreen())),
           ],

@@ -1,4 +1,6 @@
+import 'package:evcar/component/background.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../../common_widgets/form/form_header_widget.dart';
 import '../../../../constants/colors.dart';
 import '../../../../constants/image_strings.dart';
@@ -10,25 +12,28 @@ class ForgetPasswordMailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Just In-case if you want to replace the Image Color for Dark Theme
-    final brightness = MediaQuery.of(context).platformBrightness;
-    final bool isDark = brightness == Brightness.dark;
-
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: tBackgroundColor,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.cancel, color: Colors.white70),
+            onPressed: () => Get.back(),
+          ),
+        ],
+      ),
+      body: Background(
+        child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(tDefaultSpace),
+            padding: const EdgeInsets.all(tDefaultSpace * 2),
             child: Column(
               children: [
-                const SizedBox(height: tDefaultSpace * 4),
-                FormHeaderWidget(
-                  imageColor: isDark ? tPrimaryColor : tSecondaryColor,
+                const FormHeaderWidget(
                   image: tForgetPasswordImage,
                   title: tForgetPassword,
                   subTitle: tForgetPasswordSubTitle,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  heightBetween: 30.0,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: tFormHeight),
@@ -37,8 +42,10 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                     children: [
                       TextFormField(
                         decoration: const InputDecoration(
-                          label: Text(tEmail),
+                          label: Text(tEmail,
+                              style: TextStyle(color: Colors.black)),
                           hintText: tEmail,
+                          hintStyle: TextStyle(color: Colors.black),
                           prefixIcon: Icon(Icons.mail_outline_rounded),
                         ),
                       ),

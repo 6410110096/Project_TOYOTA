@@ -1,6 +1,6 @@
-import 'package:evcar/features/Screens/Home/home_page.dart';
 import 'package:evcar/features/Screens/Mail_verification/mail_verification.dart';
 import 'package:evcar/features/Screens/Welcome/welcome_screen.dart';
+import 'package:evcar/features/Screens/main_screen.dart';
 import 'package:evcar/repository/exceptions/t_exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -37,7 +37,7 @@ class AuthenticationRepository extends GetxController {
     user == null
         ? Get.offAll(() => const WelcomeScreen())
         : user.emailVerified
-            ? Get.offAll(() => const Homescreen())
+            ? Get.offAll(() => const MainScreen())
             : Get.offAll(() => const MailVerification());
   }
 

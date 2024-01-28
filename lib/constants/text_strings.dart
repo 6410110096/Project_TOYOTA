@@ -97,28 +97,12 @@ const String tEmailVerificationSubTitle =
 const String tResendEmailLink = "Resend E-Mail Link";
 const String tBackToLogin = "Back to login";
 
-// -- Dashboard Screen - Text
-const String tDashboardTitle = "Hey, Coding with T";
-const String tDashboardHeading = "Explore Courses";
-const String tDashboardSearch = "Search...";
-const String tDashboardBannerTitle2 = "JAVA";
-const String tDashboardButton = "View All";
-const String tDashboardTopCourses = "Top Courses";
-const String tDashboardBannerSubTitle = "10 Lessons";
-const String tDashboardBannerTitle1 = "Android for Beginners";
-
 // -- Profile Screen - Text
 const String tProfile = "Profile";
 const String tEditProfile = "Edit Profile";
 const String tLogoutDialogHeading = "Logout";
 const String tProfileHeading = "Coding with T";
-const String tProfileSubHeading = "superAdmin@codingwitht.com";
-// -- Menu
-const String tMenu5 = tLogout;
-const String tMenu1 = "Settings";
-const String tMenu4 = "Information";
-const String tMenu2 = "Billing Details";
-const String tMenu3 = "User Management";
+const String tProfileSubHeading = "AdminCoe@cpsu.ac.th";
 
 // -- Update Profile Screen - Text
 const String tDelete = "Delete";
