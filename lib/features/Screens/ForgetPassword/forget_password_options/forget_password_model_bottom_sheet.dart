@@ -1,3 +1,4 @@
+import 'package:evcar/features/Screens/ForgetPassword/foreget_password_phone/forget_password_phone.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../constants/sizes.dart';
@@ -13,10 +14,13 @@ class ForgetPasswordScreen {
       builder: (context) => Container(
         padding: const EdgeInsets.all(tDefaultSpace),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(tForgetPasswordTitle,
-                style: Theme.of(context).textTheme.displayMedium),
+                style: Theme.of(context)
+                    .textTheme
+                    .displaySmall
+                    ?.copyWith(fontWeight: FontWeight.bold)),
             Text(tForgetPasswordSubTitle,
                 style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 30.0),
@@ -31,7 +35,10 @@ class ForgetPasswordScreen {
             ),
             const SizedBox(height: 20.0),
             ForgetPasswordBtnWidget(
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Get.to(() => const ForgetPasswordPhoneScreen());
+              },
               title: tPhoneNo,
               subTitle: tResetViaPhone,
               btnIcon: Icons.mobile_friendly_rounded,

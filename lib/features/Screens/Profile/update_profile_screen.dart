@@ -1,3 +1,4 @@
+import 'package:evcar/component/background.dart';
 import 'package:evcar/features/controllers/profile_controller.dart';
 import 'package:evcar/features/models/user_model.dart';
 import 'package:flutter/material.dart';
@@ -23,49 +24,51 @@ class UpdateProfileScreen extends StatelessWidget {
         title: Text(tEditProfile,
             style: Theme.of(context).textTheme.headlineMedium),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(tDefaultSpace),
+      body: Background(
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(tDefaultSpace),
 
-          /// -- Future Builder to load cloud data
-          child: FutureBuilder(
-            future: controller.getUserData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  UserModel user = snapshot.data as UserModel;
+            /// -- Future Builder to load cloud data
+            child: FutureBuilder(
+              future: controller.getUserData(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    UserModel user = snapshot.data as UserModel;
 
-                  //Controllers
-                  final email = TextEditingController(text: user.email);
-                  final password = TextEditingController(text: user.password);
-                  final fullName = TextEditingController(text: user.fullName);
-                  final phoneNo = TextEditingController(text: user.phoneNo);
+                    //Controllers
+                    final email = TextEditingController(text: user.email);
+                    final password = TextEditingController(text: user.password);
+                    final fullName = TextEditingController(text: user.fullName);
+                    final phoneNo = TextEditingController(text: user.phoneNo);
 
-                  //Image & Form
-                  return Column(
-                    children: [
-                      /// -- IMAGE with ICON
-                      const ImageWithIcon(),
-                      const SizedBox(height: 50),
+                    //Image & Form
+                    return Column(
+                      children: [
+                        /// -- IMAGE with ICON
+                        const ImageWithIcon(),
+                        const SizedBox(height: 50),
 
-                      /// -- Form (Get data and pass it to FormScreen)
-                      ProfileFormScreen(
-                          fullName: fullName,
-                          email: email,
-                          phoneNo: phoneNo,
-                          password: password,
-                          user: user),
-                    ],
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(child: Text(snapshot.error.toString()));
+                        /// -- Form (Get data and pass it to FormScreen)
+                        ProfileFormScreen(
+                            fullName: fullName,
+                            email: email,
+                            phoneNo: phoneNo,
+                            password: password,
+                            user: user),
+                      ],
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text(snapshot.error.toString()));
+                  } else {
+                    return const Center(child: Text('Something went wrong'));
+                  }
                 } else {
-                  return const Center(child: Text('Something went wrong'));
+                  return const Center(child: CircularProgressIndicator());
                 }
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
-            },
+              },
+            ),
           ),
         ),
       ),

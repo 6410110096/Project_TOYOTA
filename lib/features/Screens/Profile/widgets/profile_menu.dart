@@ -11,7 +11,7 @@ class ProfileMenuWidget extends StatelessWidget {
     required this.icon,
     required this.onPress,
     this.endIcon = true,
-    this.textColor,
+    this.textColor = Colors.white54,
   }) : super(key: key);
 
   final String title;
@@ -41,7 +41,7 @@ class ProfileMenuWidget extends StatelessWidget {
               width: 30,
               height: 30,
               child: Icon(LineAwesomeIcons.angle_right,
-                  size: 18.0, color: Colors.grey))
+                  size: 25.0, color: Colors.grey))
           : null,
     );
   }

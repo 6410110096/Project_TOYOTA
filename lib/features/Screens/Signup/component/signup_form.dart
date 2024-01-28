@@ -1,3 +1,4 @@
+import 'package:evcar/common_widgets/buttons/clickable_ricktext_widget.dart';
 import 'package:evcar/features/Screens/Login/login_screen.dart';
 import 'package:evcar/features/controllers/sigup_controller.dart';
 import 'package:evcar/utils/helper/helper_controller.dart';
@@ -16,6 +17,7 @@ class SignUpFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SignUpController());
+
     return Container(
       padding:
           const EdgeInsets.only(top: tFormHeight - 15, bottom: tFormHeight),
@@ -85,37 +87,12 @@ class SignUpFormWidget extends StatelessWidget {
                         : () => controller.createUser(),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Align(
-                  alignment: Alignment.center,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const LoginScreen();
-                        },
-                      ),
-                    );
-                  },
-                  child: Text.rich(
-                    TextSpan(
-                      text: tAlreadyHaveAnAccount,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      children: const [
-                        TextSpan(
-                          text: tSignup,
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            const SizedBox(height: 10),
+            Center(
+              child: ClickableRichTextWidget(
+                  text1: tAlreadyHaveAnAccount,
+                  text2: tLogin,
+                  onPressed: () => Get.off(() => const LoginScreen())),
             ),
           ],
         ),
