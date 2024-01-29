@@ -1,11 +1,10 @@
 import 'package:evcar/component/background.dart';
+import 'package:evcar/constants/colors.dart';
 import 'package:evcar/features/controllers/profile_controller.dart';
 import 'package:evcar/features/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../../../constants/sizes.dart';
-import '../../../../constants/text_strings.dart';
 import 'profile_form.dart';
 import 'widgets/image_with_icon.dart';
 
@@ -18,11 +17,14 @@ class UpdateProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
+        backgroundColor: tBackgroundColor,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.cancel, color: Colors.white70),
             onPressed: () => Get.back(),
-            icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text(tEditProfile,
-            style: Theme.of(context).textTheme.headlineMedium),
+          ),
+        ],
       ),
       body: Background(
         child: SingleChildScrollView(
@@ -44,6 +46,7 @@ class UpdateProfileScreen extends StatelessWidget {
                     final phoneNo = TextEditingController(text: user.phoneNo);
 
                     //Image & Form
+
                     return Column(
                       children: [
                         /// -- IMAGE with ICON

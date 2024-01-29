@@ -44,7 +44,7 @@ class MailVerification extends StatelessWidget {
               const SizedBox(height: tDefaultSpace * 2),
               TextButton(
                 onPressed: () => controller.sendVerificationEmail(),
-                child: Text(tResendEmailLink.tr),
+                child: const Text(tResendEmailLink),
               ),
               TextButton(
                 onPressed: () => AuthenticationRepository.instance.logout(),
@@ -53,7 +53,7 @@ class MailVerification extends StatelessWidget {
                   children: [
                     const Icon(LineAwesomeIcons.alternate_long_arrow_left),
                     const SizedBox(width: 5),
-                    Text(tBackToLogin.tr.toLowerCase()),
+                    Text(tBackToLogin.toLowerCase()),
                   ],
                 ),
               ),
