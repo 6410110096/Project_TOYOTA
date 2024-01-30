@@ -36,8 +36,9 @@ class UserModel {
   factory UserModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
     // If document is empty then return an empty Model as created above.
-    if (document.data() == null || document.data()!.isEmpty)
+    if (document.data() == null || document.data()!.isEmpty) {
       return UserModel.empty();
+    }
     final data = document.data()!;
     return UserModel(
         id: document.id,

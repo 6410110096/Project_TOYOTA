@@ -9,7 +9,7 @@ import 'profile_form.dart';
 import 'widgets/image_with_icon.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
-  UpdateProfileScreen({Key? key}) : super(key: key);
+  UpdateProfileScreen({super.key});
 
   final controller = Get.put(ProfileController());
 

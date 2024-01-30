@@ -28,8 +28,8 @@ class _MainScreen extends State<MainScreen> {
     return Background(
       child: Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          color: const Color.fromRGBO(156, 13, 13, 1),
+          backgroundColor:  const Color.fromARGB(255, 0, 0, 0),
+          color:  const Color.fromRGBO(156, 13, 13, 1),
           index: selectedIndex,
           items: const [
             Icon(

@@ -9,13 +9,13 @@ import '../../controllers/profile_controller.dart';
 
 class ProfileFormScreen extends StatelessWidget {
   const ProfileFormScreen({
-    Key? key,
+    super.key,
     required this.user,
     required this.email,
     required this.phoneNo,
     required this.fullName,
     required this.password,
-  }) : super(key: key);
+  });
 
   final UserModel user;
   final TextEditingController email;

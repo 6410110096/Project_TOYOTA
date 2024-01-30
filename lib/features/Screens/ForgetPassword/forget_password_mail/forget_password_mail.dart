@@ -8,7 +8,7 @@ import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
 
 class ForgetPasswordMailScreen extends StatelessWidget {
-  const ForgetPasswordMailScreen({Key? key}) : super(key: key);
+  const ForgetPasswordMailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

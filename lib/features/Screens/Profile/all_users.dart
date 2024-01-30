@@ -7,7 +7,7 @@ import '../../controllers/profile_controller.dart';
 import '../../models/user_model.dart';
 
 class AllUsers extends StatelessWidget {
-  AllUsers({Key? key}) : super(key: key);
+  AllUsers({super.key});
 
   final controller = Get.put(ProfileController());
 

@@ -7,7 +7,7 @@ import '../../../repository/authentication_repository/authentication_repository.
 import '../../controllers/mail_verification_controller.dart';
 
 class MailVerification extends StatelessWidget {
-  const MailVerification({Key? key}) : super(key: key);
+  const MailVerification({super.key});
 
   @override
   Widget build(BuildContext context) {
