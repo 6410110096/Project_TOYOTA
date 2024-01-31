@@ -6,8 +6,8 @@ import '../../../../../constants/image_strings.dart';
 
 class ImageWithIcon extends StatelessWidget {
   const ImageWithIcon({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

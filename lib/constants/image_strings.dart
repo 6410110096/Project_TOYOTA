@@ -15,3 +15,7 @@ const String tForgetPasswordImage =
 
 // -- Profile Images
 const String tProfileImage = "assets/images/profile/profile-pic.png";
+
+// -- Animation
+const String verifyIllustration =
+    "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";

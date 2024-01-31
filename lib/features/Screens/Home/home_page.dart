@@ -1,13 +1,14 @@
-import 'package:evcar/component/background.dart';
 import 'package:evcar/constants/colors.dart';
 import 'package:evcar/constants/image_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:evcar/component/background.dart';
+import 'package:evcar/component/responsive.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Homescreen extends StatefulWidget {
-  const Homescreen({Key? key}) : super(key: key);
+  const Homescreen({super.key});
 
   @override
   _HomescreenState createState() => _HomescreenState();
@@ -18,6 +19,7 @@ class _HomescreenState extends State<Homescreen> {
   final String apiKey = "DGOLL3BJMA7BIDTC";
   late String field1Value;
   late List<String> separatedValues;
+  String selectedCarColor = 'White'; // Default color
 
   @override
   void initState() {
@@ -66,88 +68,191 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return Background(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 10),
-            ),
-            const Text(
-              'TOYOTA EV & PSU',
-              style: TextStyle(
-                fontSize: 33,
-                fontWeight: FontWeight.w600,
-                color: tPrimaryColor,
+        child: Responsive(
+          desktop: _buildDesktopView(),
+          mobile: _buildMobileView(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDesktopView() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 5,
+          child: Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.asset(
+                tWelcomeScreenImage,
+                height: 400,
+                width: 400,
               ),
             ),
-            const Text(
-              'Model: CoE33 & EE55',
-              style: TextStyle(fontSize: 16, color: tPrimaryColor),
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50, left: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildHeader(),
+                _buildCircularIndicator(),
+                _buildBatteryText(),
+                _buildTempVoltageRow(),
+              ],
             ),
-            const Text(
-              'Hello PSU, Welcome to EV Car model Coe & EE',
-              style: TextStyle(fontSize: 12, color: tPrimaryColor),
-            ),
-            const SizedBox(height: 20),
-            Image.asset(
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMobileView() {
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.all(10),
+        ),
+        _buildHeader(),
+        Align(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image.asset(
               tWelcomeScreenImage,
-              fit: BoxFit.contain,
+              height: 350,
+              width: 350,
             ),
-            const SizedBox(height: 20),
-            CircularPercentIndicator(
-              radius: 100.0,
-              lineWidth: 25.0,
-              animation: true,
-              percent: separatedValues.length > 0
-                  ? (double.tryParse(separatedValues[0]) ?? 0.0) / 100.0
-                  : 0.0,
-              center: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "${(separatedValues.length > 0 ? double.tryParse(separatedValues[0]) ?? 0.0 : 0.0) * 1}%",
-                      style: const TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w300,
-                        color: tPrimaryColor,
-                      ),
-                    ),
-                  ],
+          ),
+        ),
+        _buildCircularIndicator(),
+        _buildBatteryText(),
+        _buildTempVoltageRow(),
+      ],
+    );
+  }
+
+  Widget _buildHeader() {
+    return const Column(
+      children: [
+        Text(
+          'TOYOTA EV & PSU',
+          style: TextStyle(
+            fontSize: 33,
+            fontWeight: FontWeight.w600,
+            color: tPrimaryColor,
+          ),
+        ),
+        Text(
+          'Model: CoE33 & EE55',
+          style: TextStyle(fontSize: 16, color: tPrimaryColor),
+        ),
+        Text(
+          'Hello PSU, Welcome to EV Car model Coe & EE',
+          style: TextStyle(fontSize: 12, color: tPrimaryColor),
+        ),
+        SizedBox(height: 20),
+      ],
+    );
+  }
+
+  Widget _buildCircularIndicator() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: CircularPercentIndicator(
+        radius: 100.0,
+        lineWidth: 25.0,
+        animation: true,
+        percent: separatedValues.isNotEmpty
+            ? (double.tryParse(separatedValues[0]) ?? 0.0) / 100.0
+            : 0.0,
+        center: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "${(separatedValues.isNotEmpty ? double.tryParse(separatedValues[0]) ?? 0.0 : 0.0) * 1}%",
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w300,
+                  color: (separatedValues.isNotEmpty)
+                      ? (double.tryParse(separatedValues[0]) ?? 0.0) > 30
+                          ? Colors.green
+                          : (double.tryParse(separatedValues[0]) ?? 0.0) <=
+                                      30 &&
+                                  (double.tryParse(separatedValues[0]) ?? 0.0) >
+                                      20
+                              ? Colors.yellow
+                              : Colors.red
+                      : tPrimaryColor,
                 ),
               ),
-              circularStrokeCap: CircularStrokeCap.round,
-              progressColor: Colors.red[600],
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              'Battery',
-              style: TextStyle(fontSize: 15, color: tPrimaryColor),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TempVoltageCard(
-                    label: 'Temp',
-                    value: separatedValues.length > 0
-                        ? double.tryParse(separatedValues[1]) ?? 0.0
-                        : 0.0,
-                    unit: '°C',
-                  ),
-                  const SizedBox(width: 20),
-                  TempVoltageCard(
-                    label: 'Voltage',
-                    value: separatedValues.length > 0
-                        ? double.tryParse(separatedValues[2]) ?? 0.0
-                        : 0.0,
-                    unit: 'V',
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
+        circularStrokeCap: CircularStrokeCap.round,
+        progressColor: (separatedValues.isNotEmpty)
+            ? (double.tryParse(separatedValues[0]) ?? 0.0) > 30
+                ? Colors.green
+                : (double.tryParse(separatedValues[0]) ?? 0.0) <= 30 &&
+                        (double.tryParse(separatedValues[0]) ?? 0.0) > 20
+                    ? Colors.yellow
+                    : Colors.red
+            : Colors.red[600],
+      ),
+    );
+  }
+
+  Widget _buildBatteryText() {
+    return Column(
+      children: [
+        Text(
+          'Battery',
+          style: TextStyle(
+            fontSize: 15,
+            color: (separatedValues[0].isNotEmpty)
+                ? (double.tryParse(separatedValues[0]) ?? 0.0) > 30
+                    ? Colors.green
+                    : (double.tryParse(separatedValues[0]) ?? 0.0) <= 30 &&
+                            (double.tryParse(separatedValues[0]) ?? 0.0) > 20
+                        ? Colors.yellow
+                        : Colors.red
+                : tPrimaryColor,
+          ),
+        ),
+        const SizedBox(height: 10),
+      ],
+    );
+  }
+
+  Widget _buildTempVoltageRow() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TempVoltageCard(
+            label: 'Temp',
+            value: separatedValues.isNotEmpty
+                ? double.tryParse(separatedValues[1]) ?? 0.0
+                : 0.0,
+            unit: '°C',
+          ),
+          const SizedBox(width: 5),
+          TempVoltageCard(
+            label: 'Voltage',
+            value: separatedValues.isNotEmpty
+                ? double.tryParse(separatedValues[2]) ?? 0.0
+                : 0.0,
+            unit: 'V',
+          ),
+        ],
       ),
     );
   }
@@ -168,10 +273,10 @@ class TempVoltageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: tDarkColor,
+      color: const Color.fromARGB(255, 36, 35, 35),
       elevation: 10,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(30),
       ),
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -199,7 +304,6 @@ class TempVoltageCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
             ],
           ),
         ),

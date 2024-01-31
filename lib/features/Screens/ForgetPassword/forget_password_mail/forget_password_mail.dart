@@ -1,4 +1,6 @@
 import 'package:evcar/component/background.dart';
+import 'package:evcar/features/controllers/forget_controller.dart';
+import 'package:evcar/utils/validation/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../common_widgets/form/form_header_widget.dart';
@@ -8,10 +10,11 @@ import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
 
 class ForgetPasswordMailScreen extends StatelessWidget {
-  const ForgetPasswordMailScreen({Key? key}) : super(key: key);
+  const ForgetPasswordMailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: tBackgroundColor,
@@ -38,9 +41,12 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: tFormHeight),
                 Form(
+                  key: controller.forgetPasswordFormKey,
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: controller.email,
+                        validator: TValidator.validateEmail,
                         decoration: const InputDecoration(
                           label: Text(tEmail,
                               style: TextStyle(color: Colors.black)),
@@ -53,7 +59,9 @@ class ForgetPasswordMailScreen extends StatelessWidget {
                       SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                              onPressed: () {}, child: const Text(tNext))),
+                              onPressed: () =>
+                                  controller.sendPasswordResetEmail(),
+                              child: const Text(tSubmit))),
                     ],
                   ),
                 ),

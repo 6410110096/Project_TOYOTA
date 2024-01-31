@@ -1,8 +1,14 @@
 import 'package:evcar/features/Screens/Mail_verification/mail_verification.dart';
 import 'package:evcar/features/Screens/Welcome/welcome_screen.dart';
 import 'package:evcar/features/Screens/main_screen.dart';
-import 'package:evcar/repository/exceptions/t_exceptions.dart';
+import 'package:evcar/repository/exceptions/exceptions.dart';
+import 'package:evcar/repository/exceptions/firebase_auth_exceptions.dart';
+import 'package:evcar/repository/exceptions/firebase_exceptions.dart';
+import 'package:evcar/repository/exceptions/format_exceptions.dart';
+import 'package:evcar/repository/exceptions/platform_exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -48,8 +54,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      final result =
-          TExceptions.fromCode(e.code); // Throw custom [message] variable
+      final result = TExceptions.fromCode(e.code);
       throw result.message;
     } catch (_) {
       const result = TExceptions();
@@ -77,11 +82,32 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.currentUser?.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
-      final ex = TExceptions.fromCode(e.code);
-      throw ex.message;
-    } catch (_) {
-      const ex = TExceptions();
-      throw ex.message;
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// [EmailAuthentication] - FORGET PASSWORD
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
     }
   }
 
@@ -90,43 +116,36 @@ class AuthenticationRepository extends GetxController {
   /// [GoogleAuthentication] - GOOGLE
   Future<UserCredential?> signInWithGoogle() async {
     try {
-      // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      // Obtain the auth details from the request
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
-
-      // Create a new credential
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-
-      // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
-      final ex = TExceptions.fromCode(e.code);
-      throw ex.message;
-    } catch (_) {
-      const ex = TExceptions();
-      throw ex.message;
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      if (kDebugMode) print('Something went wrong: $e');
+      return null;
     }
   }
 
   ///[FacebookAuthentication] - FACEBOOK
   Future<UserCredential> signInWithFacebook() async {
     try {
-      // Trigger the sign-in flow
       final LoginResult loginResult =
           await FacebookAuth.instance.login(permissions: ['email']);
-
-      // Create a credential from the access token
       final AccessToken accessToken = loginResult.accessToken!;
       final OAuthCredential facebookAuthCredential =
           FacebookAuthProvider.credential(accessToken.token);
-
-      // Once signed in, return the UserCredential
       return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       throw e.message!;

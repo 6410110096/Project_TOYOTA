@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evcar/features/models/user_model.dart';
-import 'package:evcar/repository/exceptions/t_exceptions.dart';
+import 'package:evcar/repository/exceptions/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 

@@ -14,7 +14,7 @@ class SignUpScreenTopImage extends StatelessWidget {
           children: [
             const Spacer(),
             Expanded(
-              flex: 2,
+              flex: 5,
               child: Transform.scale(
                 scale: 1,
                 child: const Image(

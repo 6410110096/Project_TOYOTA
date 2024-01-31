@@ -1,6 +1,5 @@
 import 'package:evcar/component/background.dart';
 import 'package:evcar/component/responsive.dart';
-import 'package:evcar/constants/sizes.dart';
 import 'package:evcar/features/Screens/Welcome/component/login_signup_btn.dart';
 import 'package:evcar/features/Screens/Welcome/component/welcome_image.dart';
 import 'package:evcar/utils/animations/animation_design.dart';
@@ -10,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
-                            width: 450,
+                            width: 600,
                             child: WelcomeImage(),
                           ),
                           SizedBox(
@@ -72,21 +71,40 @@ class MobileWelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        WelcomeImage(),
-        Row(
-          children: [
-            Spacer(),
-            Expanded(
-              flex: 8,
-              child: LoginAndSignupBtn(),
-            ),
-            Spacer(),
-          ],
+        TFadeInAnimation(
+          isTwoWayAnimation: false,
+          durationInMs: 2200,
+          animate: TAnimatePosition(
+            bottomAfter: 0,
+            bottomBefore: -100,
+            leftBefore: 0,
+            leftAfter: 0,
+            topAfter: 0,
+            topBefore: 0,
+            rightAfter: 0,
+            rightBefore: 0,
+          ),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  SizedBox(
+                    width: 420,
+                    child: WelcomeImage(),
+                  ),
+                  SizedBox(
+                    width: 375,
+                    child: LoginAndSignupBtn(),
+                  ),
+                ],
+              ),
+            ],
+          ), // Wrap YourChildWidget with TFadeInAnimation
         ),
-        // const SocalSignUp()
       ],
     );
   }

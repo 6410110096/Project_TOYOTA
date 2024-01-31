@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ButtonLoadingWidget extends StatelessWidget {
   const ButtonLoadingWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

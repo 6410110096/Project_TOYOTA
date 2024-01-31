@@ -18,13 +18,10 @@ class SignUpController extends GetxController {
   final fullName = TextEditingController();
   final phoneNo = TextEditingController();
 
+  final userRepo = Get.put(UserRepository());
+
   /// Loader
   final isLoading = false.obs;
-
-  // As in the AuthenticationRepository we are calling _setScreen() Method
-  // so, whenever there is change in the user state(), screen will be updated.
-  // Therefore, when new user is authenticated, AuthenticationRepository() detects
-  // the change and call _setScreen() to switch screens
 
   /// Register New User using either [EmailAndPassword] OR [PhoneNumber] authentication
   Future<void> createUser() async {
@@ -34,10 +31,6 @@ class SignUpController extends GetxController {
         isLoading.value = false;
         return;
       }
-
-      /// For Phone Authentication
-      // SignUpController.instance.phoneAuthentication(controller.phoneNo.text.trim());
-      // Get.to(() => const OTPScreen());
 
       // Get User and Pass it to Controller
       final user = UserModel(
@@ -50,7 +43,11 @@ class SignUpController extends GetxController {
       // Authenticate User first
       final auth = AuthenticationRepository.instance;
       await auth.registerWithEmailAndPassword(user.email, user.password!);
-      await UserRepository.instance.createUser(user);
+
+      // Create User in Firestore Database
+      await userRepo.createUser(user);
+
+      // Set the initial screen
       auth.setInitialScreen(auth.firebaseUser);
     } catch (e) {
       isLoading.value = false;

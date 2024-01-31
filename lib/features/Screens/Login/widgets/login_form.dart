@@ -12,8 +12,8 @@ import '../../ForgetPassword/forget_password_options/forget_password_model_botto
 
 class LoginFormWidget extends StatelessWidget {
   const LoginFormWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
