@@ -8,6 +8,7 @@ const tAccentColor = Color.fromRGBO(237, 237, 240, 0.89);
 
 const tWhiteColor = Color.fromRGBO(255, 255, 255, 1);
 const tDarkColor = Color.fromRGBO(39, 39, 39, 1);
+const tLightColor = Color.fromRGBO(255, 255, 255, 1);
 const tCardBgColor = Color.fromRGBO(247, 245, 241, 1);
 
 // -- SOCIAL Button COLORS

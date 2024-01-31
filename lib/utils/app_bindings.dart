@@ -1,3 +1,4 @@
+import 'package:evcar/features/controllers/forget_controller.dart';
 import 'package:evcar/features/controllers/login_controller.dart';
 import 'package:evcar/features/controllers/otp_controller.dart';
 import 'package:evcar/features/controllers/sigup_controller.dart';
@@ -13,5 +14,6 @@ class InitialBinding extends Bindings {
     Get.lazyPut(() => LoginController(), fenix: true);
     Get.lazyPut(() => SignUpController(), fenix: true);
     Get.lazyPut(() => OTPController(), fenix: true);
+    Get.lazyPut(() => ForgetPasswordController(), fenix: true);
   }
 }
