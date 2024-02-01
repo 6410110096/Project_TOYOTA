@@ -11,6 +11,7 @@ class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomescreenState createState() => _HomescreenState();
 }
 
@@ -19,7 +20,7 @@ class _HomescreenState extends State<Homescreen> {
   final String apiKey = "DGOLL3BJMA7BIDTC";
   late String field1Value;
   late List<String> separatedValues;
-  String selectedCarColor = 'White'; // Default color
+  String selectedCarColor = 'White';
 
   @override
   void initState() {
